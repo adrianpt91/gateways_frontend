@@ -1,0 +1,54 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="serial">Serial Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="serial"
+            required
+            [(ngModel)]="gateway.serial"
+            name="serial"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="name">Readable Name</label>
+          <input
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="gateway.name"
+            name="name"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="name">IPv4 Address</label>
+            <input
+              class="form-control"
+              id="address"
+              required
+              [(ngModel)]="gateway.address"
+              name="address"
+            />
+        </div>
+
+        <div class="form-group">
+          <label for="gatewayId">Validate IP</label>
+          <select class="form-control" name="validip" id="validip" [(ngModel)]="gateway.validip">
+            <option  value="false">Not valid IP</option>
+            <option  value="true">Valid IP</option>
+          </select>
+        </div>
+  
+        <button (click)="saveGateway()" class="btn btn-success mt-2">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Gateway was submitted successfully!</h4>
+        <button class="btn btn-success mt-2" (click)="newGateway()">Add</button>
+      </div>
+    </div>
+  </div>

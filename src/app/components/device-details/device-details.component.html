@@ -1,0 +1,65 @@
+<div>
+    <div *ngIf="currentDevice.id" class="edit-form">
+      <h4>Device</h4>
+      <form>
+        <div class="form-group">
+          <label for="uid">UID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="uid"
+            [(ngModel)]="currentDevice.uid"
+            name="uid"
+          />
+        </div>
+        <div class="form-group">
+          <label for="vendor">Vendor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vendor"
+            [(ngModel)]="currentDevice.vendor"
+            name="vendor"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentDevice.status ? "Online" : "Offline" }}
+        </div>
+      </form>
+  
+      <button
+        class="btn btn-warning mt-2"
+        *ngIf="currentDevice.status"
+        (click)="updateStatus(false)"
+      >
+        Offline
+      </button>
+      <button
+        *ngIf="!currentDevice.status"
+        class="btn btn-success mt-2"
+        (click)="updateStatus(true)"
+      >
+        Online
+      </button>
+  
+      <button class="btn btn-danger mt-2 ms-2" (click)="deleteDevice()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="btn btn-primary mt-2 ms-2"
+        (click)="updateDevice()"
+      >
+        Update
+      </button>
+      <p class="fw-bold mt-4">{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentDevice.id">
+      <br />
+      <p>Cannot access this Device...</p>
+    </div>
+  </div>
